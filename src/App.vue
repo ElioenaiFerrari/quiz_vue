@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <h1>Super Quiz</h1>
-    <Question @answered="showResult" :question="questions[currentQuestion]" v-if="questionMode" />
-    <Result @confirmed="nextQuestion" v-else :result="result" />
+    <transition name="flip" mode="out-in">
+      <Question @answered="showResult" :question="questions[currentQuestion]" v-if="questionMode" />
+      <Result @confirmed="nextQuestion" v-else :result="result" />
+    </transition>
   </div>
 </template>
 
